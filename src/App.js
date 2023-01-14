@@ -1,23 +1,59 @@
-import logo from './logo.svg';
 import './App.css';
+import {useEffect, useState} from 'react'
 
 function App() {
+  
+  const [pugs, setPugData] = useState([]);
+  const [shibas, setShibaData] = useState([]);
+  const [huskies, setHuskyData] = useState([]);
+  const [corgis, setCorgiData] = useState([]);
+  
+
+  function apiCallPug(){
+    
+    fetch(`https://api-project-dogpics.up.railway.app/pug`)
+    .then((res) => res.json())
+    .then((data)=> setPugData(data))
+  }
+
+  function apiCallShiba(){
+    fetch(`https://api-project-dogpics.up.railway.app/shiba`)
+    .then((res) => res.json())
+    .then((data)=> setShibaData(data))
+  }
+  function apiCallHusky(){
+    fetch(`https://api-project-dogpics.up.railway.app/husky`)
+    .then((res) => res.json())
+    .then((data)=> setHuskyData(data))
+  }
+  function apiCallCorgi(){
+    fetch(`https://api-project-dogpics.up.railway.app/corgi`)
+    .then((res) => res.json())
+    .then((data)=> setCorgiData(data))
+  }
+
+
+
+  
+  
+  useEffect(()=>{
+    apiCallPug()
+    apiCallShiba()
+    apiCallCorgi()
+    apiCallHusky()
+  }, [])
+  
+  console.log(pugs)
+  console.log(shibas)
+  console.log(huskies)
+  console.log(corgis)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <img src={pugs[0].message[0]}></img>
+      <img src={shibas[0].message[0]}></img>
+      <img src={huskies[0].message[0]}></img>
+      <img src={corgis[0].message[0]}></img>
     </div>
   );
 }
