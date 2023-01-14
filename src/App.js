@@ -50,10 +50,10 @@ function App() {
 
   return (
     <div className="App">
-      <img src={pugs[0].message[0]}></img>
-      <img src={shibas[0].message[0]}></img>
-      <img src={huskies[0].message[0]}></img>
-      <img src={corgis[0].message[0]}></img>
+      <img src={pugs[0].message[0]} alt="Dog"></img>
+      <img src={shibas[0].message[0]} alt="Dog"></img>
+      <img src={huskies[0].message[0]} alt="Dog"></img>
+      <img src={corgis[0].message[0]} alt="Dog"></img>
     </div>
   );
 }
