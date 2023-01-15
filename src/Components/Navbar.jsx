@@ -1,23 +1,25 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import * as FaIcons from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-
 function Navbar() {
-    const [hidden, setDisplay] = useState(false)
+  const [hidden, setDisplay] = useState(true);
 
-    const hideMenu = () => {
-        hidden? setDisplay(false): setDisplay(true)
-    }
+  const hideMenu = () => {
+    hidden ? setDisplay(false) : setDisplay(true);
+  };
 
   return (
     <>
       <div className="top">
-        <Link  onClick={hideMenu} className="">
-          {hidden? <FaIcons.FaBars />: <FaIcons.FaTimes />}
+        <Link
+          onClick={hideMenu}
+          className={hidden === true ? "top" : "top-active"}
+        >
+          {hidden ? <FaIcons.FaBars /> : <FaIcons.FaTimes />}
         </Link>
       </div>
-      <div className={hidden? 'hidden': 'list'}>
+      <div className={hidden ? "list" : "list-active"}>
         <nav>
           <ul>
             <li>
@@ -32,7 +34,7 @@ function Navbar() {
             </li>
             <li>
               <Link to="/huskies">
-                <FaIcons.FaDog /> Huskies
+                <FaIcons.FaDog /> Husky
               </Link>
             </li>
             <li>
