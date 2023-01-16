@@ -2,11 +2,15 @@ import React, { useState } from "react";
 import * as FaIcons from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-function Navbar() {
+function Navbar(props) {
   const [hidden, setDisplay] = useState(true);
 
   const hideMenu = () => {
-    hidden ? setDisplay(false) : setDisplay(true);
+    if (hidden === true) {
+      setDisplay(false);
+    } else {
+      setDisplay(true);
+    }
   };
 
   return (

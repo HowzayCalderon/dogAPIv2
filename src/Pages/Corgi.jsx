@@ -7,7 +7,6 @@ function Corgi(props) {
   const [corgis, setCorgiData] = useState([]);
   const [dogPic, setDogPic] = useState("");
   const [displayMod, setDisplay] = useState("modal-container");
-
   function apiCallCorgi() {
     fetch(`https://api-project-dogpics.up.railway.app/corgi`)
       .then((res) => res.json())
@@ -27,7 +26,7 @@ function Corgi(props) {
     }
   };
   return (
-    <div className="main-container">
+    <div>
       <Navbar />
       <Modal
         display={displayMod}
@@ -40,6 +39,7 @@ function Corgi(props) {
               return (
                 <div>
                   <img
+                    key={index}
                     src={pic}
                     onClick={() => {
                       setDogPic(pic);
