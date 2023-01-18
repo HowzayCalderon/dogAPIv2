@@ -2,11 +2,14 @@ import React from "react";
 import Navbar from "../Components/Navbar";
 import { useEffect, useState } from "react";
 import Modal from "../Components/Modal";
+import * as FaIcons from "react-icons/fa";
 
 function Corgi(props) {
   const [corgis, setCorgiData] = useState([]);
   const [dogPic, setDogPic] = useState("");
   const [displayMod, setDisplay] = useState("modal-container");
+  const [page, setPage] = useState(0);
+
   function apiCallCorgi() {
     fetch(`https://api-project-dogpics.up.railway.app/corgi`)
       .then((res) => res.json())
@@ -18,6 +21,7 @@ function Corgi(props) {
   useEffect(() => {
     apiCallCorgi();
   }, []);
+
   const handlePicClick = () => {
     if (displayMod === "modal-container") {
       setDisplay("modal-container-active");
@@ -25,9 +29,29 @@ function Corgi(props) {
       setDisplay("modal-container");
     }
   };
+
+  const handleNextClick = () => {
+    if (page + 24 < corgis[0].message.length) {
+      setPage((prev) => prev + 24);
+    } else {
+      setPage(0);
+    }
+  };
+
+  const handlePrevClick = () => {
+    if (page - 24 < corgis[0].message.length) {
+      setPage((prev) => prev - 16);
+    } else {
+      setPage(0);
+    }
+  };
+
   return (
-    <div>
+    <div className="main-page-con">
       <Navbar />
+      <div className="title-container">
+        <h2>Corgis</h2>
+      </div>
       <Modal
         display={displayMod}
         handleclick={() => handlePicClick()}
@@ -35,7 +59,7 @@ function Corgi(props) {
       />
       <div className="pic-container">
         {corgis.length
-          ? corgis[0].message.map((pic, index) => {
+          ? corgis[0].message.slice(page, page + 24).map((pic, index) => {
               return (
                 <div>
                   <img
@@ -55,6 +79,18 @@ function Corgi(props) {
               );
             })
           : null}
+        <FaIcons.FaArrowCircleLeft
+          className="Arrow"
+          onClick={() => {
+            handlePrevClick();
+          }}
+        />
+        <FaIcons.FaArrowCircleRight
+          onClick={() => {
+            handleNextClick();
+          }}
+          className="Arrow"
+        />
       </div>
     </div>
   );

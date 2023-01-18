@@ -44,7 +44,7 @@
     font-family: 'Courier New', Courier, monospace;
   }
 
-  
+
   /* Modal Styling */
   .modal-container{
     height: 50vh;
@@ -76,7 +76,7 @@
   }
   .modal-container-active span{
     position: fixed;
-    top: 250px;
+    top: 320px;
     right: 460px;
     z-index: 5;
     font-size: x-large;
@@ -135,7 +135,7 @@ a{
   display: grid;
   justify-content: center;
   align-content: center;
-  grid-template-columns: repeat(8,1fr);
+  grid-template-columns: repeat(4,1fr);
   justify-content: center;
   position: fixed;
   top: 30px;
@@ -152,3 +152,15 @@ a{
 .pic-container img:hover{
   filter:opacity(50%);
 }
+.Arrow{
+  cursor: pointer;
+  margin-top: 50px;
+}
+
+.title-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
