@@ -50,6 +50,9 @@ function Pug() {
   return (
     <div>
       <Navbar />
+      <div className="title-container">
+        <h2>Pugs</h2>
+      </div>
       <Modal
         display={displayMod}
         handleclick={() => handlePicClick()}

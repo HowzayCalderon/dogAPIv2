@@ -8,7 +8,7 @@
     left: 0;
     display: flex;
     align-items: flex-start;
-    background-color: rgb(250, 179, 47);
+    background-color: black;
     width: 20vw;
     border-radius: 0 0 20px 20px;
     height: 100vh;
@@ -25,7 +25,7 @@
     margin-bottom: 0px;
   }
   .top-active{
-    background-color: rgb(250, 179, 47);
+    background-color: black;
     width: 20vw;
     height: 2vw;
     display: flex;
@@ -33,7 +33,7 @@
     font-size: x-large;
   }
   a:hover{
-    color: red;
+    color: white;
   }
   
   ul{
@@ -84,7 +84,7 @@
     cursor: pointer;
   }
   .modal-container-active span:hover{
-    color: red;
+    color: rgb(56, 238, 238);
   }
   .modal-img-container{
     height: 80%;
@@ -110,7 +110,7 @@ img{
 
 a{
   text-decoration: none;
-  color: gray;
+  color: rgb(56, 238, 238);
 }
 
 
@@ -161,6 +161,9 @@ a{
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
+}
+body{
+  background-color: rgb(131, 78, 152);
 }
 

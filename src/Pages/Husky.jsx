@@ -50,6 +50,9 @@ function Husky() {
   return (
     <div>
       <Navbar />
+      <div className="title-container">
+        <h2>Huskies</h2>
+      </div>
       <Modal
         display={displayMod}
         handleclick={() => handlePicClick()}

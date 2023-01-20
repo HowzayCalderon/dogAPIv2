@@ -49,6 +49,9 @@ function Shiba(props) {
   return (
     <div>
       <Navbar />
+      <div className="title-container">
+        <h2>Shibas</h2>
+      </div>
       <Modal
         display={displayMod}
         handleclick={() => handlePicClick()}
