@@ -50,7 +50,7 @@ function Shiba(props) {
     <div>
       <Navbar />
       <div className="title-container">
-        <h2>Shibas</h2>
+        <h1>Shibas</h1>
       </div>
       <Modal
         display={displayMod}

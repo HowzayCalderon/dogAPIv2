@@ -5,7 +5,6 @@ import Pug from "./Pages/Pug";
 import Shiba from "./Pages/Shiba";
 import Corgi from "./Pages/Corgi";
 import Home from "./Pages/Home";
-import DogCreate from "./Pages/DogCreate";
 
 function App() {
   return (
@@ -16,7 +15,6 @@ function App() {
         <Route path="/shibas" element={<Shiba />} />
         <Route path="/huskies" element={<Husky />} />
         <Route path="/corgis" element={<Corgi />} />
-        <Route path="/add-dog" element={<DogCreate />} />
       </Routes>
     </div>
   );

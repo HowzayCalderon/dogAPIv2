@@ -51,7 +51,7 @@ function Husky() {
     <div>
       <Navbar />
       <div className="title-container">
-        <h2>Huskies</h2>
+        <h1>Huskies</h1>
       </div>
       <Modal
         display={displayMod}

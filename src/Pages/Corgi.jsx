@@ -50,7 +50,7 @@ function Corgi(props) {
     <div className="main-page-con">
       <Navbar />
       <div className="title-container">
-        <h2>Corgis</h2>
+        <h1>Corgis</h1>
       </div>
       <Modal
         display={displayMod}
