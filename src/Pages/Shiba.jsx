@@ -31,7 +31,7 @@ function Shiba(props) {
   };
 
   const handleNextClick = () => {
-    if (page + 24 < shibas[0].message.length) {
+    if (page + 24 < shibas.message.length) {
       setPage((prev) => prev + 24);
     } else {
       setPage(0);
@@ -39,7 +39,7 @@ function Shiba(props) {
   };
 
   const handlePrevClick = () => {
-    if (page - 24 < shibas[0].message.length) {
+    if (page - 24 < shibas.message.length) {
       setPage((prev) => prev - 16);
     } else {
       setPage(0);
@@ -59,7 +59,7 @@ function Shiba(props) {
       />
       <div className="pic-container">
         {shibas.length
-          ? shibas[0].message.slice(page, page + 24).map((pic, index) => {
+          ? shibas.message.slice(page, page + 24).map((pic, index) => {
               return (
                 <div>
                   <img

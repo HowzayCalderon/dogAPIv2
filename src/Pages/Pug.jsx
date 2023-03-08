@@ -32,7 +32,7 @@ function Pug() {
   };
 
   const handleNextClick = () => {
-    if (page + 24 < pugs[0].message.length) {
+    if (page + 24 < pugs.message.length) {
       setPage((prev) => prev + 24);
     } else {
       setPage(0);
@@ -40,7 +40,7 @@ function Pug() {
   };
 
   const handlePrevClick = () => {
-    if (page - 24 < pugs[0].message.length) {
+    if (page - 24 < pugs.message.length) {
       setPage((prev) => prev - 16);
     } else {
       setPage(0);
@@ -59,8 +59,8 @@ function Pug() {
         dogPic={dogPic}
       />
       <div className="pic-container">
-        {pugs.length
-          ? pugs[0].message.slice(page, page + 24).map((pic, index) => {
+        {pugs.message.length
+          ? pugs.message.slice(page, page + 24).map((pic, index) => {
               return (
                 <div>
                   <img

@@ -11,7 +11,7 @@ function Corgi(props) {
   const [page, setPage] = useState(0);
 
   function apiCallCorgi() {
-    fetch(`https://api-project-dogpics.up.railway.app/corgi`)
+    fetch(`https://dog.ceo/api/breed/corgi/images`)
       .then((res) => res.json())
       .then((data) => setCorgiData(data))
       .catch((err) => {
@@ -31,7 +31,7 @@ function Corgi(props) {
   };
 
   const handleNextClick = () => {
-    if (page + 24 < corgis[0].message.length) {
+    if (page + 24 < corgis.message.length) {
       setPage((prev) => prev + 24);
     } else {
       setPage(0);
@@ -39,7 +39,7 @@ function Corgi(props) {
   };
 
   const handlePrevClick = () => {
-    if (page - 24 < corgis[0].message.length) {
+    if (page - 24 < corgis.message.length) {
       setPage((prev) => prev - 16);
     } else {
       setPage(0);
@@ -58,8 +58,8 @@ function Corgi(props) {
         dogPic={dogPic}
       />
       <div className="pic-container">
-        {corgis.length
-          ? corgis[0].message.slice(page, page + 24).map((pic, index) => {
+        {corgis.message.length
+          ? corgis.message.slice(page, page + 24).map((pic, index) => {
               return (
                 <div>
                   <img
