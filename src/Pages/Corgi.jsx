@@ -5,17 +5,14 @@ import Modal from "../Components/Modal";
 import axios from "axios";
 
 function Corgi(props) {
-  const [corgis, setCorgiData] = useState([]);
-  const [picIndex, setIndex] = useState(0)
+  const [corgis, setCorgiData] = useState({});
 
   async function apiCallCorgi() {
     try {
       const response = await axios.get(
         `https://dog.ceo/api/breed/corgi/images`
       );
-      setCorgiData(response);
-      console.log(corgis.data.message);
-
+      setCorgiData(response.data);
     } 
     catch (error) {
       console.error(error);
@@ -34,7 +31,10 @@ function Corgi(props) {
       </div>
       <div className="outerContainer">
         <div className="innerContainer">
-          <img src={corgis.data.message[picIndex]} alt="" />
+          {corgis.message ? corgis['message'].map((item,index) => (
+            <img src={item} key = {index}></img>
+          )): <p>Loading...</p>}
+          <img src={corgis['message'] ? corgis['message'][2]: <p>Loading...</p>} alt="" />
         </div>
       </div>
     </div>
