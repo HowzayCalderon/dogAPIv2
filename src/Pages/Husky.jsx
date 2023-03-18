@@ -3,6 +3,7 @@ import Navbar from "../Components/Navbar";
 import Modal from "../Components/Modal";
 import { useEffect, useState } from "react";
 import * as FaIcons from "react-icons/fa";
+import axios from "axios";
 
 function Husky() {
   const [huskies, setHuskyData] = useState([]);
@@ -10,18 +11,20 @@ function Husky() {
   const [displayMod, setDisplay] = useState("modal-container");
   const [page, setPage] = useState(0);
 
-  function apiCallHusky() {
-    fetch(`https://dog.ceo/api/breed/husky/images`)
-      .then((res) => res.json())
-      .then((data) => setHuskyData(data))
-      .catch((err) => {
-        console.log(err.message);
-      });
+  async function apiCallHusky() {
+    try {
+      const response = await axios.get(`https://dog.ceo/api/breed/husky/images`);
+      setHuskyData(response.data);
+    }
+    catch (error){
+      console.error(error)
+    }
   }
 
   useEffect(() => {
     apiCallHusky();
   }, []);
+
 
   const handlePicClick = () => {
     if (displayMod === "modal-container") {
@@ -60,8 +63,7 @@ function Husky() {
         dogPic={dogPic}
       />
       <div className="pic-container">
-        {huskies.message.length
-          ? huskies.message.slice(page, page + 24).map((pic, index) => {
+        {huskies.message ? huskies.message.slice(page, page + 24).map((pic, index) => {
               return (
                 <div>
                   <img

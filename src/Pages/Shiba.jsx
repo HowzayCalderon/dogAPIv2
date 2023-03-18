@@ -3,6 +3,7 @@ import Navbar from "../Components/Navbar";
 import Modal from "../Components/Modal";
 import { useEffect, useState } from "react";
 import * as FaIcons from "react-icons/fa";
+import axios from "axios";
 
 function Shiba(props) {
   const [shibas, setShibaData] = useState([]);
@@ -10,14 +11,16 @@ function Shiba(props) {
   const [displayMod, setDisplay] = useState("modal-container");
   const [page, setPage] = useState(0);
 
-  function apiCallShiba() {
-    fetch(`https://api-project-dogpics.up.railway.app/shiba`)
-      .then((res) => res.json())
-      .then((data) => setShibaData(data))
-      .catch((err) => {
-        console.log(err.message);
-      });
+  async function apiCallShiba() {
+    try{
+      const response = await axios.get(`https://dog.ceo/api/breed/shiba/images`)
+      setShibaData(response.data);
+    }
+    catch(error){
+      console.error(error);
+    }
   }
+
   useEffect(() => {
     apiCallShiba();
   }, []);
@@ -58,7 +61,7 @@ function Shiba(props) {
         dogPic={dogPic}
       />
       <div className="pic-container">
-        {shibas.length
+        {shibas.message
           ? shibas.message.slice(page, page + 24).map((pic, index) => {
               return (
                 <div>

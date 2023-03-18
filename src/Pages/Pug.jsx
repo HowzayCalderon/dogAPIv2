@@ -3,6 +3,7 @@ import Navbar from "../Components/Navbar";
 import Modal from "../Components/Modal";
 import { useEffect, useState } from "react";
 import * as FaIcons from "react-icons/fa";
+import axios from "axios";
 
 function Pug() {
   const [pugs, setPugData] = useState([]);
@@ -10,13 +11,16 @@ function Pug() {
   const [displayMod, setDisplay] = useState("modal-container");
   const [page, setPage] = useState(0);
 
-  function apiCallPug() {
-    fetch(`https://api-project-dogpics.up.railway.app/pug`)
-      .then((res) => res.json())
-      .then((data) => setPugData(data))
-      .catch((err) => {
-        console.log(err.message);
-      });
+   async function apiCallPug() {
+    try{
+      const response = await axios.get(`https://dog.ceo/api/breed/pug/images`)
+      setPugData(response.data)
+    }
+    catch(error){
+      console.error(error)
+    }
+    
+  
   }
 
   useEffect(() => {
@@ -59,7 +63,7 @@ function Pug() {
         dogPic={dogPic}
       />
       <div className="pic-container">
-        {pugs.message.length
+        {pugs.message
           ? pugs.message.slice(page, page + 24).map((pic, index) => {
               return (
                 <div>
